@@ -4,8 +4,6 @@ A personal link hub built with React + Vite.
 
 🌐 Live site: https://my-link-ahycgg1tz-fkirnabila5295fsts-labs-projects.vercel.app
 
-![Preview](screenshot.png)
-
 
 ## Built with
 - React
