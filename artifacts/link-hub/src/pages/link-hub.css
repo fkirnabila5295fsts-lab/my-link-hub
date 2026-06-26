@@ -1,0 +1,205 @@
+/* ════════════════════════════════
+   Background & blobs
+   ════════════════════════════════ */
+
+.link-hub-root {
+  background: #f3eeff;
+  transition: background 0.5s ease;
+}
+
+.dark .link-hub-root {
+  background: #0e0a1f;
+}
+
+/* Blobs */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.dark .blob {
+  opacity: 0.45;
+}
+
+/* Light mode blobs */
+.blob-1 {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, #c4b5fd 0%, #a78bfa 60%, transparent 100%);
+  animation: float1 12s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -100px;
+  right: -80px;
+  background: radial-gradient(circle, #fbcfe8 0%, #f9a8d4 60%, transparent 100%);
+  animation: float2 14s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: -60px;
+  background: radial-gradient(circle, #bae6fd 0%, #7dd3fc 60%, transparent 100%);
+  animation: float3 10s ease-in-out infinite;
+}
+
+.blob-4 {
+  width: 260px;
+  height: 260px;
+  top: 10%;
+  right: -40px;
+  background: radial-gradient(circle, #d9f99d 0%, #a3e635 50%, transparent 100%);
+  opacity: 0.3;
+  animation: float4 16s ease-in-out infinite;
+}
+
+/* Dark mode blobs — richer, deeper */
+.dark .blob-1 {
+  background: radial-gradient(circle, #7c3aed 0%, #4c1d95 60%, transparent 100%);
+  opacity: 0.6;
+}
+
+.dark .blob-2 {
+  background: radial-gradient(circle, #be185d 0%, #831843 60%, transparent 100%);
+  opacity: 0.5;
+}
+
+.dark .blob-3 {
+  background: radial-gradient(circle, #0369a1 0%, #075985 60%, transparent 100%);
+  opacity: 0.5;
+}
+
+.dark .blob-4 {
+  background: radial-gradient(circle, #15803d 0%, #166534 50%, transparent 100%);
+  opacity: 0.25;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  z-index: 1;
+}
+
+/* ════════════════════════════════
+   Float keyframes
+   ════════════════════════════════ */
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, 30px) scale(1.06); }
+  66%       { transform: translate(-20px, 50px) scale(0.96); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-50px, -40px) scale(1.08); }
+  70%       { transform: translate(30px, -20px) scale(0.94); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(60px, -30px) scale(1.1); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30%       { transform: translate(-30px, 40px) scale(1.05); }
+  60%       { transform: translate(20px, 20px) scale(0.95); }
+}
+
+/* ════════════════════════════════
+   Avatar ring animation
+   ════════════════════════════════ */
+
+.avatar-ring {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899, #38bdf8);
+  background-size: 200% 200%;
+  animation: ring-spin 4s linear infinite;
+}
+
+@keyframes ring-spin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Badge pulse */
+.badge-pulse {
+  animation: badge-pop 2.5s ease-in-out infinite;
+}
+
+@keyframes badge-pop {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.18); }
+}
+
+/* ════════════════════════════════
+   Entrance animations
+   ════════════════════════════════ */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(0.7); }
+  70%  { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.avatar-enter {
+  animation: pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.name-enter {
+  animation: fade-up 0.5s ease forwards;
+  animation-delay: 0.28s;
+  opacity: 0;
+}
+
+.bio-enter {
+  animation: fade-up 0.5s ease forwards;
+  animation-delay: 0.38s;
+  opacity: 0;
+}
+
+.link-card {
+  animation: fade-up 0.4s ease forwards;
+  opacity: 0;
+}
+
+.footer-enter {
+  animation: fade-up 0.4s ease forwards;
+  animation-delay: 0.85s;
+  opacity: 0;
+}
+
+/* ════════════════════════════════
+   Glassmorphism refinement
+   ════════════════════════════════ */
+
+.link-hub-root .link-card:hover {
+  backdrop-filter: blur(16px);
+}
